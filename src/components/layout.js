@@ -34,7 +34,7 @@ const Layout = ({ children }) => (
           <Container>
             <center>
               Built for simple gatsby website © {new Date().getFullYear()}
-              {` `} - Ariel of Webriq
+              {` `} - Ariel P.
             </center>
           </Container>
         </footer>
