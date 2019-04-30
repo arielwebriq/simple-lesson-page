@@ -63,6 +63,7 @@ class IndexPage extends React.Component {
             <Col md="9">
               <div
                 key={`lessoncontent`}
+                className="lessoncontent"
                 dangerouslySetInnerHTML={{
                   __html: this.props.data.allMarkdownRemark.edges[
                     this.state.order

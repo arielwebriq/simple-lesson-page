@@ -12,6 +12,7 @@ import { StaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "./layout.css"
 import "bootstrap/dist/css/bootstrap.min.css"
+import { Container } from "reactstrap"
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -30,10 +31,12 @@ const Layout = ({ children }) => (
 
         <main>{children}</main>
         <footer>
-          <center>
-            Built for simple gatsby website © {new Date().getFullYear()}
-            {` `} - Ariel of Webriq
-          </center>
+          <Container>
+            <center>
+              Built for simple gatsby website © {new Date().getFullYear()}
+              {` `} - Ariel of Webriq
+            </center>
+          </Container>
         </footer>
       </>
     )}

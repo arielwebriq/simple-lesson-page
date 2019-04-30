@@ -627,3 +627,15 @@ pre tt:after {
   background-color: #dcdcdc;
   cursor: pointer;
 }
+.list-group-item.active {
+  background-color: #00d191 !important;
+  border: 1px solid #27d49f !important;
+}
+.btn-link {
+  color: #00d191 !important;
+}
+@media screen and (max-width: 768px) {
+  .lessoncontent {
+    padding-top: 40px;
+  }
+}
