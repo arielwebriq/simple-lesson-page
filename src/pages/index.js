@@ -29,6 +29,7 @@ class IndexPage extends React.Component {
       <Layout>
         <SEO
           title="Gatsby Modern Website"
+          description="This is a simple lessons page using reactstrap, react, and markdown."
           keywords={[`gatsby`, `application`, `react`]}
         />
         <Container>
