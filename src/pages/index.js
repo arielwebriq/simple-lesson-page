@@ -11,8 +11,11 @@ class IndexPage extends React.Component {
     this.state = {
       clicked: false,
       order: 0,
+      currentKey: "",
+      fullScreen: false,
     }
     this.onClicked = this.onClicked.bind(this)
+    this.escFunction = this.escFunction.bind(this)
   }
   onClicked(lessonorder) {
     this.setState({
@@ -21,10 +24,48 @@ class IndexPage extends React.Component {
     })
   }
 
+  escFunction(e) {
+    this.setState({
+      currentKey: e.keyCode,
+    })
+
+    this.state.currentKey === 39 &&
+    this.state.order + 1 !== this.props.data.allMarkdownRemark.edges.length
+      ? this.setState({
+          order: this.state.order + 1,
+          clicked: true,
+        })
+      : this.state.currentKey === 37 && this.state.order !== 0
+      ? this.setState({
+          order: this.state.order - 1,
+          clicked: true,
+        })
+      : this.state.currentKey === 120
+      ? this.setState({
+          clicked: true,
+          fullScreen: true,
+        })
+      : this.state.currentKey === 121
+      ? this.setState({
+          clicked: true,
+          fullScreen: false,
+        })
+      : console.log(this.state.fullScreen)
+  }
+
+  componentDidMount() {
+    document.addEventListener("keydown", this.escFunction, false)
+  }
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.escFunction, false)
+  }
   render() {
     const data = this.props.data.allMarkdownRemark.edges.map(
       lesson => lesson.node
     )
+    console.log(this.state.currentKey)
+    console.log(this.state.fullScreen)
+    // 120, 121
     return (
       <Layout>
         <SEO
@@ -33,35 +74,39 @@ class IndexPage extends React.Component {
           keywords={[`gatsby`, `application`, `react`]}
         />
         <Container>
-          <h4>Lessons</h4>
           <Row>
-            <Col md="3">
-              <ul className="list-group">
-                {data.map(lesson => (
-                  <li
-                    onClick={lessonorder =>
-                      this.onClicked({
-                        clicked: true,
-                        order: lesson.frontmatter.order,
-                      })
-                    }
-                    key={lesson.id}
-                    className={`list-group-item ${
-                      this.state.clicked === false &&
-                      lesson.frontmatter.order === 0
-                        ? "active"
-                        : this.state.clicked === true &&
-                          lesson.frontmatter.order === this.state.order
-                        ? "active"
-                        : ""
-                    }`}
-                  >
-                    <small>{lesson.frontmatter.title}</small>
-                  </li>
-                ))}
-              </ul>
-            </Col>
-            <Col md="9">
+            {!this.state.fullScreen ? (
+              <Col md="3">
+                <ul className="list-group">
+                  {data.map(lesson => (
+                    <li
+                      onClick={lessonorder =>
+                        this.onClicked({
+                          clicked: true,
+                          order: lesson.frontmatter.order,
+                        })
+                      }
+                      key={lesson.id}
+                      className={`list-group-item ${
+                        this.state.clicked === false &&
+                        lesson.frontmatter.order === 0
+                          ? "active"
+                          : this.state.clicked === true &&
+                            lesson.frontmatter.order === this.state.order
+                          ? "active"
+                          : ""
+                      }`}
+                    >
+                      <small>{lesson.frontmatter.title}</small>
+                    </li>
+                  ))}
+                </ul>
+              </Col>
+            ) : (
+              ""
+            )}
+
+            <Col md={!this.state.fullScreen ? "9" : "12"}>
               <div
                 key={`lessoncontent`}
                 className="lessoncontent"

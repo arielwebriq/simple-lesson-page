@@ -1,13 +1,102 @@
 ---
-title: Lesson 4
+title: Implement Header with Sidebar Menu
 order: 3
 ---
 
-To install Gatsby and Node.js, it is recommended to use Homebrew. A little set-up in the beginning can save you from some headaches later on!
+<h5>Implement Header with Sidebar Menu</h5>
+<italic>Note: Import sidebar plugin at header.js. Sidebar is where you place Sidebar Menu.</italic>
 
-How to install or verify Homebrew on your computer:
+References:<br />
+https://www.npmjs.com/package/react-sticky-header
+https://www.npmjs.com/package/react-sidebar
 
-Open your Terminal.
-See if Homebrew is installed by running brew -v. You should see “Homebrew” and a version number.
-If not, download and install Homebrew with the instructions for your operating system (Mac, Linux or Windows).
-Once you’ve installed Homebrew, repeat step 2 to verify.
+<code>npm install react-sticky-header --save</code><br />
+<code>npm install react-sidebar --save</code><br />
+<code>npm install react-bootstrap --save</code><br />
+
+<h5>header.js</h5>
+
+```
+import React from "react";
+import StickyHeader from "react-sticky-header";
+import SideBar from "react-sidebar";
+import { Container, Row } from "react-bootstrap";
+import SideBarNav from "../sidebar/sidebar.js";
+import BurgerMenu from "../../images/burgerMenu.jpg"
+
+class Header extends React.Component{
+  constructor(props) {
+    super(props);
+      this.state = {
+        sidebarOpen: false,
+        sidebarpullRight: true
+      };
+      this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+  }
+onSetSidebarOpen(open) {
+  this.setState({ sidebarOpen: open });
+  }
+  render(){
+    return(
+      <Container>
+        <StickyHeader
+        header={
+          <Row>
+            <div className="col-md-6">
+              Header Menu
+            </div>
+            <div className="col-md-6">
+              <img src={BurgerMenu} onClick={() => this.onSetSidebarOpen(true)} />
+            </div>
+          </Row>
+        }
+        />
+        <SideBar
+          sidebar={
+            <div>
+              <SideBarNav />
+              //this opens sidebar menu's
+              </div>
+          }
+          open={this.state.sidebarOpen}
+          onSetOpen={this.onSetSidebarOpen}
+          pullRight={this.state.sidebarpullRight}
+          styles={{
+          sidebar: {
+            background: "white",
+            width: "265px",
+            position: "fixed",
+            zIndex: "100"
+          }
+        }} >
+        </SideBar>
+      </Container>
+    )
+  }
+}
+
+export default Header
+
+```
+
+<h5>sidebar.js</h5>
+
+```
+import React from "react";
+import { Link } from "gatsby";
+
+const Sidebar = () = (
+
+  <div className="sidebarnavigationlist">
+    <ul>
+      <li>Home</li>
+      <li>About Us</li>
+      <li>Contact Us</li>
+    </ul>
+  </div>
+)
+
+export default Sidebar
+
+
+```

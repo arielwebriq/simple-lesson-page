@@ -1,8 +1,28 @@
 ---
-title: Lesson 1
+title: Gatsby Development Environment
 order: 0
 ---
 
-Welcome to Gatsby! We’re glad you’re here. The goal of this tutorial is to guide you through setting up and deploying your first Gatsby site using a starter template. As we walk through that process, we’ll introduce some more general web development topics, and go over the underlying structure of a Gatsby site.
+<h2>Gatsby Development Environment</h2>
+<ul>
+	<li><strong>NodeJS 10+ -</strong> is a JavaScript runtime built on Chrome's V8 JavaScript </li>
+	<li><strong>Prettier -</strong> If you're using Sublime Text, install JSPrettier or Visual Studio Code, install Prettier-VSCode</li>
+	<li><strong>Gatsby -</strong>Modern static site generator made from React -> npm install gatsby-cli -g</li>
+</ul>
 
-The full tutorial is intended to be as accessible as possible to people without much web development experience (yet!) — no need to be an expert. If you prefer to jump straight to code, feel free to skip the step-by-step tutorial and see the quick start page.
+<h1>Basic Commands</h1>
+
+<h6>Create new site</h6>
+<code>gatsby new ProjectName</code>
+
+<h6>Start Development Server</h6>
+<code>gatsby develop</code>
+or
+<code>npm run develop</code>
+Runs development server that reloads every time changes in files of your project are made.
+
+<h6>Create a production build</h6>
+<code>gatsby build</code>
+or
+<code>npm run build</code>
+Runs development server that reloads every time changes in files of your project are made.
