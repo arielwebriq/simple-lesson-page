@@ -1,5 +1,5 @@
 ---
-title: Swiper Slider
+title: 5. Swiper Slider
 order: 4
 ---
 

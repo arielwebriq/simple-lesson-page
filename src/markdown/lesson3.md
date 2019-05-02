@@ -1,5 +1,5 @@
 ---
-title: Passing of props data
+title: 3. Passing of props data
 order: 2
 ---
 

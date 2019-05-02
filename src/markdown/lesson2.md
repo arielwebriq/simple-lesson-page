@@ -1,5 +1,5 @@
 ---
-title: Convert Function Component to Class Component
+title: 2. Convert Function Component to Class Component
 order: 1
 ---
 
