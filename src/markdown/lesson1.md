@@ -13,16 +13,18 @@ order: 0
 <h1>Basic Commands</h1>
 
 <h6>Create new site</h6>
-<code>gatsby new ProjectName</code>
+<code>gatsby new ProjectName</code> <br/>
 
 <h6>Start Development Server</h6>
 <code>gatsby develop</code>
 or
-<code>npm run develop</code>
+<code>npm run develop</code><br/>
+<p>
 Runs development server that reloads every time changes in files of your project are made.
+</p><br/>
 
 <h6>Create a production build</h6>
 <code>gatsby build</code>
 or
 <code>npm run build</code>
-Runs development server that reloads every time changes in files of your project are made.
+<p>Runs development server that reloads every time changes in files of your project are made.</p>
